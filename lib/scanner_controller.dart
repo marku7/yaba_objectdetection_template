@@ -55,8 +55,8 @@ class ScannerController extends GetxController{
 
   Future<void> initTFLite() async {
     await Tflite.loadModel(
-        model: "assets/model_unquant.tflite",
-        labels: "assets/labels.txt",
+        model: "assets/NameSaImongModel.tflite", //imohang file path sa model
+        labels: "assets/NameSaImongLabel.txt", //imohang file path sa label
         isAsset: true,
         numThreads: 1,
         useGpuDelegate: false

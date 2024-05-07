@@ -29,8 +29,8 @@ class _ImageUploaderScreen extends State<ImageUploaderScreen> {
 
   Future loadModel() async{
     await Tflite.loadModel(
-        model: "assets/mode_unquant.tflite",
-        labels: "assets/labels.txt",
+        model: "assets/NameSaImongModel.tflite", //imohang file path sa model
+        labels: "assets/NameSaImongLabel.txt", //imohang file path sa label
         isAsset: true,
         numThreads: 1,
         useGpuDelegate: false
@@ -54,7 +54,6 @@ class _ImageUploaderScreen extends State<ImageUploaderScreen> {
     img.Image resizedImage = img.copyResize(oriImage!, height: 224, width: 224);
     var recognitions = await Tflite.runModelOnBinary(
       binary: imageToByteListFloat32(resizedImage, 224, 127.5, 127.5),
-      // binary: imageToByteListUint8(resizedImage, 224),
       numResults: 6,
       threshold: 0.05,
     );
